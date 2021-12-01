@@ -50,7 +50,7 @@ function theGame() {
 let yourScore = 0;
 let compScore = 0;
 
-for (let i = 0; i < 5; i++) {
+while (compScore < 5 && yourScore < 5) {
   switch (theGame()) {
     case 2:
       yourScore += 1;
@@ -59,20 +59,18 @@ for (let i = 0; i < 5; i++) {
       compScore += 1;
       break;
     default:
-      yourScore += 1;
-      compScore += 1;
+      yourScore += 0;
+      compScore += 0;
       break;
   }
 }
 
 function scoreAnouncer() {
-    if (yourScore > compScore) {
-        alert(`You win! ${yourScore} - ${compScore}`);
-    } else {
-        alert(`You lose! ${yourScore} - ${compScore}`);
-    }
-};
+  if (yourScore > compScore) {
+    alert(`You win! ${yourScore} - ${compScore}`);
+  } else {
+    alert(`You lose! ${yourScore} - ${compScore}`);
+  }
+}
 
-scoreAnouncer()
-
-
+scoreAnouncer();

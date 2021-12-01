@@ -20,7 +20,7 @@ function foolCheck() {
   return playerSelection;
 }
 
-function theGame() {
+function playGame() {
   playerSelection = foolCheck();
   computerSelection = computerPlay();
   if (playerSelection == "Paper" && computerSelection == "Scissors") {
@@ -51,7 +51,7 @@ let yourScore = 0;
 let compScore = 0;
 
 while (compScore < 5 && yourScore < 5) {
-  switch (theGame()) {
+  switch (playGame()) {
     case 2:
       yourScore += 1;
       break;
@@ -65,7 +65,7 @@ while (compScore < 5 && yourScore < 5) {
   }
 }
 
-function scoreAnouncer() {
+function scoreAnounce() {
   if (yourScore > compScore) {
     alert(`You win! ${yourScore} - ${compScore}`);
   } else {
@@ -73,4 +73,4 @@ function scoreAnouncer() {
   }
 }
 
-scoreAnouncer();
+scoreAnounce();

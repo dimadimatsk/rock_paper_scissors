@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./scripts/game.js"></script>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <header class="header">
+      <h1>ROCK PAPER SCISSOR</h1>
+    </header>
+    <main>
+      <div class="scoreboard">
+        <h2 id='scoreInfo'>Choose your weapon, man.</h2>
+        <h3 id='scoreMsg'>Score 5 points and you will win!</h3>
+        <div class="score_container">
+          <div class="score_box">
+            <img />
+            <p class='score' id="playerScore">Player: 0</p>
+          </div>
+          <div class="score_box">
+            <img />
+            <p class='score' id="compScore">Enemy: 0</p>
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="btn rock">rock</button>
+        <button class="btn paper">paper</button>
+        <button class="btn scissors">scissors</button>
+      </div>
+    </main>
+    <!-- <div class='replay'>
+        <p class='replay-title' id='endMsg'></p>
+        <button class='btn_restart' id='restartBtn'>Play again!</button> -->
+  </body>
+  <script src="./scripts/game.js"></script>
 </html>

@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 :root {
-  --frost-main: linear-gradient(to left, #000428, #004e92);
+  --frost-main: linear-gradient(to bottom, #000428, #004e92);
   --frost-text: #ddd;
+  --header: #000428;
 }
 
 *,
@@ -32,6 +35,97 @@ button {
   outline: none;
   cursor: pointer;
 }
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0px;
+}
+
+.title {
+  font-size: 32px;
+  font-family: "Press Start 2P", cursive;
+}
+
+.main {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.scoreboard {
+  margin-bottom: 15px;
+}
+
+.score_info {
+  font-size: 32px;
+}
+
+.score_msg {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.score_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.score_box {
+  width: 170px;
+}
+
+.score {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.btn {
+  border-radius: 10px;
+  width: 130px;
+  height: 130px;
+  color: black;
+}
+
+.img_choice {
+    width: 70%;
+    height: 70%;
+}
+
+.btn:hover {
+  background-color: ;
+}
+
+.btn:active {
+  background-color: ;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  color: var(--frost-text);
+}
+
 /* .overlay {
   display: none;
   width: 100%;

@@ -9,12 +9,14 @@
   </head>
   <body>
     <header class="header">
-      <h1>ROCK PAPER SCISSOR</h1>
+      <h1 class="title">ROCK PAPER SCISSOR</h1>
     </header>
-    <main>
+    <main class="main">
       <div class="scoreboard">
-        <h2 id="scoreInfo">Choose your weapon, man.</h2>
-        <h3 id="scoreMsg">Score 5 points and you will win!</h3>
+        <h2 class="score_info" id="scoreInfo">Choose your weapon, man.</h2>
+        <h3 class="score_msg" id="scoreMsg">
+          Score 5 points and you will win!
+        </h3>
         <div class="score_container">
           <div class="score_box">
             <img />
@@ -27,12 +29,18 @@
         </div>
       </div>
       <div class="buttons">
-        <button class="btn rock">rock</button>
-        <button class="btn paper">paper</button>
-        <button class="btn scissors">scissors</button>
+        <button class="btn rock">
+          <img class="img_choice" src="./images/rock.png" alt="rock" />
+        </button>
+        <button class="btn paper">
+          <img class="img_choice" src="./images/paper.png" alt="paper" />
+        </button>
+        <button class="btn scissors">
+          <img class="img_choice" src="./images/scissors.png" alt="scissors" />
+        </button>
       </div>
     </main>
-    <footer>Copyright © dimareectsk</footer>
+    <footer class="footer">Copyright © dimareectsk</footer>
     <div class="replay">
       <p class="replay-title" id="endMsg"></p>
       <button class="btn_restart" id="restartBtn" style="visibility: hidden">

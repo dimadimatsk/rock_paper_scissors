@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>ROCK PAPER SCISSOR</title>
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <header class="header">
@@ -12,16 +13,16 @@
     </header>
     <main>
       <div class="scoreboard">
-        <h2 id='scoreInfo'>Choose your weapon, man.</h2>
-        <h3 id='scoreMsg'>Score 5 points and you will win!</h3>
+        <h2 id="scoreInfo">Choose your weapon, man.</h2>
+        <h3 id="scoreMsg">Score 5 points and you will win!</h3>
         <div class="score_container">
           <div class="score_box">
             <img />
-            <p class='score' id="playerScore">Player: 0</p>
+            <p class="score" id="playerScore">Player: 0</p>
           </div>
           <div class="score_box">
             <img />
-            <p class='score' id="compScore">Enemy: 0</p>
+            <p class="score" id="compScore">Enemy: 0</p>
           </div>
         </div>
       </div>
@@ -31,9 +32,14 @@
         <button class="btn scissors">scissors</button>
       </div>
     </main>
-    <!-- <div class='replay'>
-        <p class='replay-title' id='endMsg'></p>
-        <button class='btn_restart' id='restartBtn'>Play again!</button> -->
+    <footer>Copyright © dimareectsk</footer>
+    <div class="replay">
+      <p class="replay-title" id="endMsg"></p>
+      <button class="btn_restart" id="restartBtn" style="visibility: hidden">
+        Play again!
+      </button>
+    </div>
+    <div class="overlay" id="overlay"></div>
   </body>
   <script src="./scripts/game.js"></script>
 </html>

@@ -34,30 +34,30 @@ function playGame(playerSelection) {
   if (playerSelection === computerSelection) {
     roundWinner = "tie";
   }
-}
-
-// gameover check
-function isGameOver() {
   if (playerScore === 5 || compScore === 5) {
-    return true;
+    isGameOver();
+    playAgain();
+    overlay.classList.add('active');
   }
-  return false;
-}
-
-// play game
-
-function memChoice(e) {
-  playerSelection = e.target.classList[e.target.classList.length - 1];
-  if (isGameOver === true) {
-    return;
-  }
-  playGame(playerSelection);
   updateScore();
   changeScoreMsg();
 }
 
-// update score
+// gameover check
+function isGameOver() {
+  buttons.forEach((button) => {
+    button.setAttribute("disabled", "");
+    button.classList.add("disabled-button");
+  });
+}
 
+// play game
+function memChoice(e) {
+  playerSelection = e.target.classList[e.target.classList.length - 1];
+  playGame(playerSelection);
+}
+
+// update score
 function updateScore() {
   if (roundWinner === "tie") {
     scoreInfo.textContent = "It's a tie!";
@@ -86,19 +86,48 @@ function changeScoreMsg() {
     scoreMsg.textContent = `${capitalizeFirstLetter(
       playerSelection
     )} ties with ${computerSelection}`;
-  };
-};
+  }
+}
 
 // capitalize first letter
 function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
+// set final msg
+// function setFinalMsg() {
+//   return playerScore > compScore ? 
+// }
+
 // consts for change DOM
 const scoreInfo = document.getElementById("scoreInfo");
 const scoreMsg = document.getElementById("scoreMsg");
 const playerScoreValue = document.getElementById("playerScore");
 const computerScoreValue = document.getElementById("compScore");
+const playAgainButton = document.getElementById("restartBtn");
+const overlay = document.getElementById("overlay");
+
+// show play again button
+function playAgain() {
+  playAgainButton.style.visibility = "visible";
+  playAgainButton.addEventListener("click", reloadGame);
+}
+
+// reload game
+function reloadGame() {
+  playerScore = 0;
+  compScore = 0;
+  scoreInfo.textContent = "Choose your weapon, man.";
+  scoreMsg.textContent = "Score 5 points and you will win!";
+  playerScoreValue.textContent = "Player: 0";
+  computerScoreValue.textContent = "Computer: 0";
+  buttons.forEach((button) => {
+    button.removeAttribute("disabled");
+    button.classList.remove("disabled-button");
+  });
+  playAgainButton.style.visibility = "hidden";
+  overlay.classList.remove('active');
+}
 
 // choice all buttons from page
 const buttons = document.querySelectorAll(".btn");

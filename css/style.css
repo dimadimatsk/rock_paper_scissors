@@ -45,6 +45,7 @@ button {
 .title {
   font-size: 32px;
   font-family: "Press Start 2P", cursive;
+  text-align: center;
 }
 
 .main {
@@ -187,3 +188,26 @@ button {
 .overlay.active {
   display: block;
 }
+
+@media (max-width: 400px) {
+    .title {
+      font-size: 18px;
+    }
+  
+    .score_info {
+      font-size: 27px;
+    }
+  
+    .buttons {
+      gap: 10px;
+    }
+  
+    .img_choice {
+      width: 100px;
+      height: 100px;
+    }
+    
+    .replay {
+      width: 80%;
+    }
+  }

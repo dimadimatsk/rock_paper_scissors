@@ -64,7 +64,6 @@ function choiceWeapon(playerSelection) {
   if (playerScore === 5 || compScore === 5) {
     openFinalMsgBox();
     setFinalMsg();
-    playAgain();
     return;
   }
   const computerSelection = computerPlay();
@@ -74,7 +73,6 @@ function choiceWeapon(playerSelection) {
   if (playerScore === 5 || compScore === 5) {
     openFinalMsgBox();
     setFinalMsg();
-    playAgain();
     return;
   }
 }

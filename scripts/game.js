@@ -131,6 +131,8 @@ function capitalizeFirstLetter(str) {
 // reload game
 function reloadGame() {
   deLightningFace();
+  faceFirst.src = "./images/main.png";
+  faceSecond.src = "./images/main.png";
   playerScore = 0;
   compScore = 0;
   scoreInfo.textContent = "Choose your weapon, man.";

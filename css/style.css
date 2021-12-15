@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
 :root {
   --frost-main: linear-gradient(to bottom, #000428, #004e92);
@@ -79,6 +80,16 @@ button {
   width: 170px;
 }
 
+.face {
+  width: 100px;
+  height: 100px;
+}
+
+.face.winner {
+  box-shadow: 0 0 20px 1px;
+  border-radius: 60px;
+}
+
 .score {
   margin-top: 10px;
   margin-bottom: 20px;
@@ -93,13 +104,6 @@ button {
   gap: 30px;
 }
 
-/* .btn {
-  border-radius: 10px;
-  width: 130px;
-  height: 130px;
-  color: black;
-} */
-
 .img_choice {
   border-radius: 10px;
   width: 130px;
@@ -111,11 +115,6 @@ button {
 .img_choice:hover {
   cursor: pointer;
   transform: scale(1.2);
-  /* box-shadow: 0 0 20px 1px; */
-}
-
-.btn:active {
-  background-color: ;
 }
 
 .footer {
@@ -166,13 +165,13 @@ button {
 }
 
 .btn_restart:hover {
-    padding: 10px 20px;
-    margin-top: 25px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    color: #004e92;
-    background-color: var(--frost-text);
-  }
+  padding: 10px 20px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  color: #004e92;
+  background-color: var(--frost-text);
+}
 
 .overlay {
   display: none;
@@ -190,24 +189,41 @@ button {
 }
 
 @media (max-width: 400px) {
-    .title {
-      font-size: 18px;
-    }
-  
-    .score_info {
-      font-size: 27px;
-    }
-  
-    .buttons {
-      gap: 10px;
-    }
-  
-    .img_choice {
-      width: 100px;
-      height: 100px;
-    }
-    
-    .replay {
-      width: 80%;
-    }
+  .title {
+    font-size: 18px;
   }
+
+  .score_info {
+    font-size: 27px;
+  }
+
+  .buttons {
+    gap: 10px;
+  }
+
+  .img_choice {
+    width: 100px;
+    height: 100px;
+  }
+
+  .replay {
+    width: 80%;
+  }
+
+  .btn_restart {
+    font-size: 18px;
+  }
+
+  .replay {
+    width: 250px;
+  }
+
+  .replay-title {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .footer {
+    font-size: 16px;
+  }
+}

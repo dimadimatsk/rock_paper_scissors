@@ -1,5 +1,28 @@
-// const weapons
+// const for game
 const gameValues = ["rock", "paper", "scissors"];
+
+// consts for change DOM
+const scoreInfo = document.getElementById("scoreInfo");
+const scoreMsg = document.getElementById("scoreMsg");
+const playerScoreValue = document.getElementById("playerScore");
+const computerScoreValue = document.getElementById("compScore");
+const playAgainButton = document.getElementById("restartBtn");
+const overlay = document.getElementById("overlay");
+const endMsg = document.getElementById("endMsg");
+const endBox = document.getElementById("endBox");
+const btnImages = document.querySelectorAll(".img_choice");
+const rockBtn = document.getElementById("rock");
+const paperBtn = document.getElementById("paper");
+const scissorsBtn = document.getElementById("scissors");
+const faceFirst = document.getElementById("first_face");
+const faceSecond = document.getElementById("second_face");
+
+// eventlistner
+rockBtn.addEventListener("click", () => choiceWeapon("rock"));
+paperBtn.addEventListener("click", () => choiceWeapon("paper"));
+scissorsBtn.addEventListener("click", () => choiceWeapon("scissors"));
+playAgainButton.addEventListener("click", reloadGame);
+overlay.addEventListener("click", closeFinalMsgBox);
 
 // game scores
 let playerScore = 0;
@@ -14,6 +37,7 @@ function computerPlay() {
 
 // game function
 function playRound(playerSelection, computerSelection) {
+  deLightningFace();
   if (
     (playerSelection === "paper" && computerSelection === "scissors") ||
     (playerSelection === "rock" && computerSelection === "paper") ||
@@ -35,28 +59,7 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-// gameover check
-// function isGameOver() {
-//   buttons.forEach((button) => {
-//     button.setAttribute("disabled", "");
-//     button.classList.add("disabled-button");
-//   });
-// }
-
-// play game
-// function memChoice(e) {
-//   if (playerScore === 5 || compScore === 5) {
-//     openFinalMsgBox();
-//     setFinalMsg();
-//     playAgain();
-//   } else {
-//     playerSelection = e.target.alt;
-//     playGame(playerSelection);
-//   }
-// }
-
 // meme choices
-
 function choiceWeapon(playerSelection) {
   if (playerScore === 5 || compScore === 5) {
     openFinalMsgBox();
@@ -89,23 +92,37 @@ function updateScore() {
   computerScoreValue.textContent = `Enemy: ${compScore}`;
 }
 
-// change score msg
+// change score msg, add winner face, highlight winner face
 function changeScoreMsg(playerSelection, computerSelection) {
   if (roundWinner === "player") {
     scoreMsg.textContent = `${capitalizeFirstLetter(
       playerSelection
     )} crushes ${computerSelection}`;
+    faceFirst.src = "./images/win.png";
+    faceSecond.src = "./images/lose.png";
+    faceFirst.classList.add("winner");
   }
   if (roundWinner === "computer") {
     scoreMsg.textContent = `${capitalizeFirstLetter(
       playerSelection
     )} is owned by ${computerSelection}`;
+    faceFirst.src = "./images/lose.png";
+    faceSecond.src = "./images/win.png";
+    faceSecond.classList.add("winner");
   }
   if (roundWinner === "tie") {
     scoreMsg.textContent = `${capitalizeFirstLetter(
       playerSelection
     )} ties with ${computerSelection}`;
+    faceFirst.src = "./images/tie.png";
+    faceSecond.src = "./images/tie.png";
   }
+}
+
+// de-lightning
+function deLightningFace() {
+  faceFirst.classList.remove("winner");
+  faceSecond.classList.remove("winner");
 }
 
 // capitalize first letter
@@ -113,32 +130,9 @@ function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-// consts for change DOM
-const scoreInfo = document.getElementById("scoreInfo");
-const scoreMsg = document.getElementById("scoreMsg");
-const playerScoreValue = document.getElementById("playerScore");
-const computerScoreValue = document.getElementById("compScore");
-const playAgainButton = document.getElementById("restartBtn");
-const overlay = document.getElementById("overlay");
-const endMsg = document.getElementById("endMsg");
-const endBox = document.getElementById("endBox");
-const btnImages = document.querySelectorAll(".img_choice");
-const rockBtn = document.getElementById("rock");
-const paperBtn = document.getElementById("paper");
-const scissorsBtn = document.getElementById("scissors");
-
-rockBtn.addEventListener("click", () => choiceWeapon("rock"));
-paperBtn.addEventListener("click", () => choiceWeapon("paper"));
-scissorsBtn.addEventListener("click", () => choiceWeapon("scissors"));
-playAgainButton.addEventListener("click", reloadGame);
-
-// show play again button
-function playAgain() {
-  playAgainButton.addEventListener("click", reloadGame);
-}
-
 // reload game
 function reloadGame() {
+  deLightningFace();
   playerScore = 0;
   compScore = 0;
   scoreInfo.textContent = "Choose your weapon, man.";
@@ -148,11 +142,6 @@ function reloadGame() {
   overlay.classList.remove("active");
   endBox.classList.remove("active");
 }
-
-// player choices rock, paper or scissors for fight; activate game;
-// btnImages.forEach((img) => {
-//   img.addEventListener("click", memChoice);
-// });
 
 // open final msg box
 function openFinalMsgBox() {
@@ -165,8 +154,6 @@ function closeFinalMsgBox() {
   endBox.classList.remove("active");
   overlay.classList.remove("active");
 }
-
-overlay.addEventListener("click", closeFinalMsgBox);
 
 // final score message
 function setFinalMsg() {

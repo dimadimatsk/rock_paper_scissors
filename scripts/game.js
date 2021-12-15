@@ -13,8 +13,7 @@ function computerPlay() {
 }
 
 // game function
-function playGame(playerSelection) {
-  computerSelection = computerPlay();
+function playRound(playerSelection, computerSelection) {
   if (
     (playerSelection === "paper" && computerSelection === "scissors") ||
     (playerSelection === "rock" && computerSelection === "paper") ||
@@ -34,27 +33,47 @@ function playGame(playerSelection) {
   if (playerSelection === computerSelection) {
     roundWinner = "tie";
   }
-  if (playerScore === 5 || compScore === 5) {
-    isGameOver();
-    playAgain();
-    overlay.classList.add('active');
-  }
-  updateScore();
-  changeScoreMsg();
 }
 
 // gameover check
-function isGameOver() {
-  buttons.forEach((button) => {
-    button.setAttribute("disabled", "");
-    button.classList.add("disabled-button");
-  });
-}
+// function isGameOver() {
+//   buttons.forEach((button) => {
+//     button.setAttribute("disabled", "");
+//     button.classList.add("disabled-button");
+//   });
+// }
 
 // play game
-function memChoice(e) {
-  playerSelection = e.target.classList[e.target.classList.length - 1];
-  playGame(playerSelection);
+// function memChoice(e) {
+//   if (playerScore === 5 || compScore === 5) {
+//     openFinalMsgBox();
+//     setFinalMsg();
+//     playAgain();
+//   } else {
+//     playerSelection = e.target.alt;
+//     playGame(playerSelection);
+//   }
+// }
+
+// meme choices
+
+function choiceWeapon(playerSelection) {
+  if (playerScore === 5 || compScore === 5) {
+    openFinalMsgBox();
+    setFinalMsg();
+    playAgain();
+    return;
+  }
+  const computerSelection = computerPlay();
+  playRound(playerSelection, computerSelection);
+  updateScore();
+  changeScoreMsg(playerSelection, computerSelection);
+  if (playerScore === 5 || compScore === 5) {
+    openFinalMsgBox();
+    setFinalMsg();
+    playAgain();
+    return;
+  }
 }
 
 // update score
@@ -71,7 +90,7 @@ function updateScore() {
 }
 
 // change score msg
-function changeScoreMsg() {
+function changeScoreMsg(playerSelection, computerSelection) {
   if (roundWinner === "player") {
     scoreMsg.textContent = `${capitalizeFirstLetter(
       playerSelection
@@ -94,11 +113,6 @@ function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-// set final msg
-// function setFinalMsg() {
-//   return playerScore > compScore ? 
-// }
-
 // consts for change DOM
 const scoreInfo = document.getElementById("scoreInfo");
 const scoreMsg = document.getElementById("scoreMsg");
@@ -106,10 +120,20 @@ const playerScoreValue = document.getElementById("playerScore");
 const computerScoreValue = document.getElementById("compScore");
 const playAgainButton = document.getElementById("restartBtn");
 const overlay = document.getElementById("overlay");
+const endMsg = document.getElementById("endMsg");
+const endBox = document.getElementById("endBox");
+const btnImages = document.querySelectorAll(".img_choice");
+const rockBtn = document.getElementById("rock");
+const paperBtn = document.getElementById("paper");
+const scissorsBtn = document.getElementById("scissors");
+
+rockBtn.addEventListener("click", () => choiceWeapon("rock"));
+paperBtn.addEventListener("click", () => choiceWeapon("paper"));
+scissorsBtn.addEventListener("click", () => choiceWeapon("scissors"));
+playAgainButton.addEventListener("click", reloadGame);
 
 // show play again button
 function playAgain() {
-  playAgainButton.style.visibility = "visible";
   playAgainButton.addEventListener("click", reloadGame);
 }
 
@@ -121,18 +145,32 @@ function reloadGame() {
   scoreMsg.textContent = "Score 5 points and you will win!";
   playerScoreValue.textContent = "Player: 0";
   computerScoreValue.textContent = "Computer: 0";
-  buttons.forEach((button) => {
-    button.removeAttribute("disabled");
-    button.classList.remove("disabled-button");
-  });
-  playAgainButton.style.visibility = "hidden";
-  overlay.classList.remove('active');
+  overlay.classList.remove("active");
+  endBox.classList.remove("active");
 }
 
-// choice all buttons from page
-const buttons = document.querySelectorAll(".btn");
-
 // player choices rock, paper or scissors for fight; activate game;
-buttons.forEach((btn) => {
-  btn.addEventListener("click", memChoice);
-});
+// btnImages.forEach((img) => {
+//   img.addEventListener("click", memChoice);
+// });
+
+// open final msg box
+function openFinalMsgBox() {
+  endBox.classList.add("active");
+  overlay.classList.add("active");
+}
+
+// close final msg box
+function closeFinalMsgBox() {
+  endBox.classList.remove("active");
+  overlay.classList.remove("active");
+}
+
+overlay.addEventListener("click", closeFinalMsgBox);
+
+// final score message
+function setFinalMsg() {
+  return playerScore > compScore
+    ? (endMsg.textContent = "You won!")
+    : (endMsg.textContent = "You lose!");
+}

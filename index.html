@@ -19,33 +19,36 @@
         </h3>
         <div class="score_container">
           <div class="score_box">
-            <img />
+            <!-- <img src="./images/lose.png" /> -->
             <p class="score" id="playerScore">Player: 0</p>
           </div>
           <div class="score_box">
-            <img />
+            <!-- <img src="./images/win.png" /> -->
             <p class="score" id="compScore">Enemy: 0</p>
           </div>
         </div>
       </div>
       <div class="buttons">
-        <button class="btn rock">
-          <img class="img_choice" src="./images/rock.png" alt="rock" />
-        </button>
-        <button class="btn paper">
-          <img class="img_choice" src="./images/paper.png" alt="paper" />
-        </button>
-        <button class="btn scissors">
-          <img class="img_choice" src="./images/scissors.png" alt="scissors" />
-        </button>
+        <img class="img_choice" id="rock" src="./images/rock.png" alt="rock" />
+        <img
+          class="img_choice"
+          id="paper"
+          src="./images/paper.png"
+          alt="paper"
+        />
+        <img
+          class="img_choice"
+          id="scissors"
+          src="./images/scissors.png"
+          alt="scissors"
+        />
       </div>
     </main>
-    <footer class="footer">Copyright © dimareectsk</footer>
-    <div class="replay">
+    <footer class="footer">© dimareectsk</footer>
+    <!-- replay container -->
+    <div class="replay" id="endBox">
       <p class="replay-title" id="endMsg"></p>
-      <button class="btn_restart" id="restartBtn" style="visibility: hidden">
-        Play again!
-      </button>
+      <button class="btn_restart" id="restartBtn">Play again!</button>
     </div>
     <div class="overlay" id="overlay"></div>
   </body>
